@@ -13,11 +13,16 @@ public class UserService {
         return userRepo.findAll();
     }
 
-    public String addUser(String name, int age){
+    public String addUserParam(String name, int age){
         User u = new User();
         u.setName(name);
         u.setAge(age);
         userRepo.save(u);
         return "A new user was added!";
+    }
+
+    public Response addUserJson(User user) {
+        userRepo.save(user);
+        return new Response("A new users with name: " + user.getName()+ " from JSON request body was added", Boolean.TRUE);
     }
 }

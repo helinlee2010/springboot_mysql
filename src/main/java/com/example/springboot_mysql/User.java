@@ -10,6 +10,15 @@ public class User {
     private long id;
 
     private String name;
+
+    public User(String name, int age) {
+        this.name = name;
+        this.age = age;
+    }
+
+    public User() {
+    }
+
     private int age;
 
     public String getName() {
