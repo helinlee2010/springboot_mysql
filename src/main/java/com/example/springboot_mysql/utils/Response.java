@@ -1,4 +1,4 @@
-package com.example.springboot_mysql;
+package com.example.springboot_mysql.utils;
 
 public class Response {
     private String message;

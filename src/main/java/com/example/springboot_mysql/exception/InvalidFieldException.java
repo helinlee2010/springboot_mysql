@@ -1,4 +1,4 @@
-package com.example.springboot_mysql;
+package com.example.springboot_mysql.exception;
 
 public class InvalidFieldException extends RuntimeException {
     private static final long serialVersionUID = 1L;
