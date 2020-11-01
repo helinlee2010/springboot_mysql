@@ -20,9 +20,13 @@ public class UserController {
         return service.getAllUsers();
     }
 
+    @GetMapping("/{id}")
+    public User getUserById(@PathVariable long id){
+        return service.getUserById(id);
+    }
+
     @PostMapping("/add-with-param")
-    public @ResponseBody
-    String addUserParam(@RequestParam String name, @RequestParam int age){
+    public Response addUserParam(@RequestParam String name, @RequestParam int age){
         return service.addUserParam(name, age);
     }
 
@@ -33,4 +37,10 @@ public class UserController {
         }
         return service.addUserJson(user);
     }
+
+    @DeleteMapping("/{id}")
+    public Response deleteUserById(@PathVariable long id){
+        return service.deleteUserById(id);
+    }
+
 }
