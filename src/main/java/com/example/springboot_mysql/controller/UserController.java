@@ -1,6 +1,6 @@
 package com.example.springboot_mysql.controller;
 
-import com.example.springboot_mysql.User;
+import com.example.springboot_mysql.models.User;
 import com.example.springboot_mysql.UserService;
 import com.example.springboot_mysql.exception.InvalidFieldException;
 import com.example.springboot_mysql.utils.Response;
@@ -26,13 +26,13 @@ public class UserController {
     }
 
     @PostMapping("/add-with-param")
-    public Response addUserParam(@RequestParam String name, @RequestParam int age){
-        return service.addUserParam(name, age);
+    public Response addUserParam(@RequestParam String username, @RequestParam String password){
+        return service.addUserParam(username, password);
     }
 
     @PostMapping("/add-with-json")
     public Response addUserJson(@RequestBody User user){
-        if(StringUtils.isEmpty(user.getName())){
+        if(StringUtils.isEmpty(user.getUsername())){
             throw new InvalidFieldException("Name is required.");
         }
         return service.addUserJson(user);

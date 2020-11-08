@@ -1,13 +1,9 @@
 package com.example.springboot_mysql;
 
-import org.springframework.data.repository.CrudRepository;
-import org.springframework.stereotype.Repository;
-
-import java.util.List;
+import com.example.springboot_mysql.models.User;
+import org.springframework.data.jpa.repository.JpaRepository;
 
 
-public interface UserRepository extends CrudRepository<User, Long> {
-    public List<User> findByName(String name);
-
-    public List<User> findByAge(int age);
+public interface UserRepository extends JpaRepository<User, Long> {
+    public User findByUsername(String username);
 }
