@@ -11,10 +11,10 @@ import java.util.Map;
 import java.util.function.Function;
 
 public class JwtUtils {
-    private String secret = "secret";
+    private String SECRET_KEY = "secret";
 
     private Claims extractAllClaims(String token){
-        return Jwts.parser().setSigningKey(secret).parseClaimsJws(token).getBody();
+        return Jwts.parser().setSigningKey(SECRET_KEY).parseClaimsJws(token).getBody();
     }
 
     public<T> T extractClaim(String token, Function<Claims, T> claimsResolver){
@@ -37,7 +37,7 @@ public class JwtUtils {
         // subject is username
         return Jwts.builder().setClaims(claims).setSubject(subject).setIssuedAt(new Date(System.currentTimeMillis()))
                 .setExpiration(new Date(System.currentTimeMillis()+ 1000*60*60*10)) //10hours
-                .signWith(SignatureAlgorithm.HS256, secret)
+                .signWith(SignatureAlgorithm.HS256, SECRET_KEY)
                 .compact();
     }
     public String generateToken(String username){
